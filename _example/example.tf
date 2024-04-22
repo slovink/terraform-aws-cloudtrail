@@ -6,7 +6,7 @@ data "aws_caller_identity" "current" {}
 
 
 module "s3_logs" {
-  source  = "git::git@github.com:slovink/terraform-aws-s3"
+  source = "git::git@github.com:slovink/terraform-aws-s3?ref=v1.0.0"
 
   name                         = "bucket-logs"
   environment                  = "security"
@@ -67,3 +67,4 @@ data "aws_iam_policy_document" "default" {
     }
   }
 }
+

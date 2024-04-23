@@ -51,7 +51,7 @@ This module has a few dependencies:
 For detailed examples on how to use this module, please refer to the [Examples](https://github.com/slovink/slovink-terraform-aws-cloudtrail/tree/dev/_example) directory within this repository.
 
 ## License
-This Terraform module is provided under the '[License Name]' License. Please see the [LICENSE](https://github.com/slovink/terraform-aws-mfa/blob/main/LICENSE) file for more details.
+This Terraform module is provided under the '[License Name]' License. Please see the [LICENSE](https://github.com/slovink/slovink-terraform-aws-cloudtrail/blob/dev/LICENSE) file for more details.
 
 
 

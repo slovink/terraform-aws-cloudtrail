@@ -1,5 +1,7 @@
+
 #Module      : LABEL
 #Description : Terraform label module variables.
+
 variable "name" {
   type        = string
   description = "Name  (e.g. `app` or `cluster`)."
@@ -30,11 +32,6 @@ variable "attributes" {
   description = "Additional attributes (e.g. `1`)."
 }
 
-variable "tags" {
-  type        = map(string)
-  default     = {}
-  description = "Additional tags (e.g. map(`BusinessUnit`,`XYZ`)."
-}
 
 variable "managedby" {
   type        = string
@@ -80,12 +77,12 @@ variable "cloud_watch_logs_role_arn" {
   sensitive   = true
 }
 
-variable "cloud_watch_logs_group_arn" {
-  type        = string
-  default     = ""
-  description = "Specifies a log group name using an Amazon Resource Name (ARN), that represents the log group to which CloudTrail logs will be delivered."
-  sensitive   = true
-}
+#variable "cloud_watch_logs_group_arn" {
+#  type        = string
+#  default     = ""
+#  description = "Specifies a log group name using an Amazon Resource Name (ARN), that represents the log group to which CloudTrail logs will be delivered."
+#  sensitive   = true
+#}
 
 variable "event_selector" {
   type        = bool
@@ -105,11 +102,6 @@ variable "include_management_events" {
   description = " Specify if you want your event selector to include management events for your trail."
 }
 
-variable "data_resource" {
-  type        = bool
-  default     = true
-  description = " Specify if you want your event selector to include management events for your trail."
-}
 
 variable "event_selector_data_resource" {
   type        = bool
@@ -130,12 +122,7 @@ variable "data_resource_values" {
   sensitive   = true
 }
 
-variable "kms_key_id" {
-  type        = string
-  default     = ""
-  description = "Specifies the KMS key ARN to use to encrypt the logs delivered by CloudTrail."
-  sensitive   = true
-}
+
 
 variable "is_organization_trail" {
   type        = bool

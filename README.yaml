@@ -1,0 +1,57 @@
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name: Terraform AWS Cloudtrail
+# License of this project
+license: "APACHE"
+
+# Canonical GitHub repo
+github_repo: https://github.com/slovink/slovink-terraform-aws-cloudtrail
+
+# Badges to display
+badges:
+  - name: "Latest Release"
+    image: "https://img.shields.io/github/release/slovink/slovink-terraform-aws-cloudtrail.svg"
+    url: "https://github.com/slovink/slovink-terraform-aws-cloudtrail/tree/dev"
+  - name: "tfsec"
+    image: "https://github.com/slovink/slovink-terraform-aws-cloudtrail/blob/dev/.github/workflows/tfsec.yml"
+    url: "https://github.com/slovink/slovink-terraform-aws-cloudtrail/blob/dev/.github/workflows/tfsec.yml"
+  - name: "Licence"
+    image: "https://img.shields.io/badge/License-APACHE-blue.svg"
+    url: "LICENSE.md"
+
+prerequesties:
+  - name: Terraform 1.7.0
+    url: https://learn.hashicorp.com/terraform/getting-started/install.html
+
+#  description of this project
+description: |-
+  Terraform module to create Cloudtrail resource on AWS.
+
+# extra content
+include:
+  - "terraform.md"
+
+# How to use this project
+usage: |-
+  ### Simple Example
+  Here is an example of how you can use this module in your inventory structure:
+    ```hcl
+    module "cloudtrail" {
+        source = "git@github.com:slovink/slovink-terraform-aws-cloudtrail.git?ref=v1.0.0"
+
+        name                          = "cloudtrail"
+        environment                   = "security"
+        label_order                   = ["name", "environment"]
+        s3_bucket_name                = module.s3_logs.id
+        enable_logging                = true
+        enable_log_file_validation    = true
+        include_global_service_events = true
+        is_organization_trail         = false
+        log_retention_days            = 90
+
+    }
+  ```

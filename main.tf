@@ -3,7 +3,7 @@
 #              for resources. You can use terraform-labels to implement a strict naming
 #              convention.
 module "labels" {
-  source  = "git::git@github.com:slovink/terraform-aws-labels.git"
+  source = "git::git@github.com:slovink/terraform-aws-labels.git?ref=v1.0.0"
 
   name        = var.name
   repository  = var.repository
@@ -26,7 +26,7 @@ resource "aws_cloudtrail" "default" {
   is_multi_region_trail         = true
   include_global_service_events = var.include_global_service_events
   cloud_watch_logs_role_arn     = var.cloud_watch_logs_role_arn
-  cloud_watch_logs_group_arn    = var.cloud_watch_logs_group_arn
+  cloud_watch_logs_group_arn    = data.cloud_watch_logs_group_arn
   kms_key_id                    = aws_kms_key.cloudtrail.arn
   is_organization_trail         = var.is_organization_trail
   tags                          = module.labels.tags
@@ -89,7 +89,7 @@ data "aws_iam_policy_document" "cloudtrail_cloudwatch_logs" {
       "logs:CreateLogStream",
       "logs:PutLogEvents",
     ]
-     #tfsec:ignore:aws-iam-no-policy-wildcards
+    #tfsec:ignore:aws-iam-no-policy-wildcards
     resources = ["arn:${data.aws_partition.current.partition}:logs:eu-west-1:${data.aws_caller_identity.current.account_id}:log-group:cloudwatch-log-group:*"]
   }
 }
